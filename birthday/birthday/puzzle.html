@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>A Little Secret 🖤</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #050505;
+    color: #f5eee8;
+    font-family: Georgia, serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: pageAppear 1.5s ease-in-out;
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    min-height: 100vh;
+    padding: 45px 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+@keyframes pageAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.small {
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: #b9a69d;
+    margin-bottom: 25px;
+}
+
+.main-heart {
+    font-size: 35px;
+    color: #a51f25;
+    margin-bottom: 25px;
+    animation: heartBeat 2s infinite ease-in-out;
+}
+
+@keyframes heartBeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.12);
+        text-shadow: 0 0 18px rgba(165,31,37,0.7);
+    }
+}
+
+h1 {
+    font-size: 34px;
+    font-weight: normal;
+    letter-spacing: 2px;
+    margin: 0 0 15px;
+}
+
+.subtitle {
+    color: #b9a69d;
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+.question {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.options {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.option {
+    width: 100%;
+    padding: 17px;
+    border: 1px solid #5b3a3a;
+    border-radius: 35px;
+    background: #0c0c0c;
+    color: #f5eee8;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.option:hover {
+    border-color: #a51f25;
+    transform: translateY(-3px);
+    box-shadow: 0 0 15px rgba(165,31,37,0.4);
+}
+
+.option:active {
+    transform: scale(0.96);
+}
+
+.nothing-message {
+    display: none;
+    animation: reveal 0.8s ease;
+}
+
+@keyframes reveal {
+    from {
+        opacity: 0;
+        transform: scale(0.85);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.nothing-message h2 {
+    font-size: 25px;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+.nothing-message p {
+    color: #cbbab2;
+    line-height: 1.7;
+}
+
+.bubu {
+    width: 230px;
+    max-width: 80%;
+    margin: 15px auto 10px;
+    display: block;
+    animation: bubuPop 0.8s ease;
+}
+
+@keyframes bubuPop {
+    0% {
+        opacity: 0;
+        transform: scale(0.6) rotate(-5deg);
+    }
+
+    70% {
+        transform: scale(1.08) rotate(2deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0);
+    }
+}
+
+.try-again {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 14px 35px;
+    border: 1px solid #a51f25;
+    border-radius: 30px;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: 2px;
+    cursor: pointer;
+    background: transparent;
+    font-family: Georgia, serif;
+    font-size: 15px;
+    transition: 0.3s ease;
+}
+
+.try-again:hover {
+    background: #a51f25;
+    box-shadow: 0 0 20px rgba(165,31,37,0.6);
+}
+
+.game {
+    display: none;
+    width: 100%;
+    animation: reveal 0.8s ease;
+}
+
+.game h2 {
+    font-weight: normal;
+    margin-bottom: 8px;
+}
+
+.game p {
+    color: #b9a69d;
+    margin-bottom: 20px;
+}
+
+.heart-area {
+    position: relative;
+    width: 100%;
+    height: 430px;
+    border: 1px solid #3d2727;
+    border-radius: 20px;
+    background: #080808;
+    overflow: hidden;
+}
+
+.game-heart {
+    position: absolute;
+    font-size: 38px;
+    color: #a51f25;
+    cursor: pointer;
+    user-select: none;
+    animation: float 2s infinite ease-in-out;
+    transition: transform 0.2s ease;
+}
+
+.game-heart:hover {
+    transform: scale(1.25);
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.game-heart.pop {
+    animation: popHeart 0.35s ease forwards;
+}
+
+@keyframes popHeart {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.7);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+.count {
+    color: #b9a69d;
+    margin-top: 15px;
+}
+
+.complete {
+    display: none;
+    margin-top: 25px;
+    animation: reveal 1s ease;
+}
+
+.complete h2 {
+    color: #fff;
+    font-weight: normal;
+}
+
+.next {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 14px 35px;
+    border: 1px solid #a51f25;
+    border-radius: 30px;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: 2px;
+    transition: 0.3s ease;
+}
+
+.next:hover {
+    background: #a51f25;
+    box-shadow: 0 0 20px rgba(165,31,37,0.6);
+}
+
+/* Hidden music */
+#ourSong {
+    display: none;
+}
+</style>
+</head>
+
+<body>
+
+<audio id="ourSong" loop>
+    <source src="music/perfect.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+
+    <div class="small">A LITTLE SECRET</div>
+
+    <div class="main-heart">♡</div>
+
+    <h1>A Little Secret...</h1>
+
+    <div class="subtitle">
+        Something special is waiting for you.<br>
+        But first, you have to find it. 🖤
+    </div>
+
+    <div class="question">
+        A little secret is waiting for you...<br>
+        <em>Can you find it?</em> ♡
+    </div>
+
+    <div class="options" id="options">
+
+        <button class="option" onclick="showNothing()">
+            Maybe... nothing? 🌙
+        </button>
+
+        <button class="option" onclick="startGame()">
+            Let me find out ♡
+        </button>
+
+    </div>
+
+    <div class="nothing-message" id="nothingMessage">
+
+        <div class="main-heart">😤</div>
+
+        <h2>Why did you click NOTHING?!</h2>
+
+        <p>
+            You were supposed to find<br>
+            the little surprise! 🥺
+        </p>
+
+        <img
+            src="angry-bubu.png"
+            class="bubu"
+            alt="Cute angry Bubu Dudu"
+        >
+
+        <button class="try-again" onclick="tryAgain()">
+            TRY AGAIN ♡
+        </button>
+
+    </div>
+
+    <div class="game" id="game">
+
+        <div class="main-heart">♥</div>
+
+        <h2>Pop All the Hearts ❤️</h2>
+
+        <p>
+            Pop every heart to unlock your surprise.
+        </p>
+
+        <div class="heart-area" id="heartArea"></div>
+
+        <div class="count" id="count">
+            Hearts left: 12
+        </div>
+
+        <div class="complete" id="complete">
+
+            <h2>You did it! ❤️</h2>
+
+            <p>
+                You found them all...
+                now your surprise is waiting. ♡
+            </p>
+
+            <a class="next" href="photos.html">
+                CONTINUE →
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+const music = document.getElementById("ourSong");
+
+const savedTime = sessionStorage.getItem("musicTime");
+
+if (savedTime) {
+    music.currentTime = parseFloat(savedTime);
+}
+
+if (sessionStorage.getItem("musicStarted") === "true") {
+    music.play().catch(() => {});
+}
+
+setInterval(function() {
+    if (!music.paused) {
+        sessionStorage.setItem("musicTime", music.currentTime);
+    }
+}, 500);
+
+
+function showNothing() {
+
+    document.getElementById("options").style.display = "none";
+
+    document.querySelector(".question").style.display = "none";
+
+    document.querySelector(".subtitle").style.display = "none";
+
+    document.querySelector("h1").style.display = "none";
+
+    document.getElementById("nothingMessage").style.display = "block";
+}
+
+
+function tryAgain() {
+
+    document.getElementById("nothingMessage").style.display = "none";
+
+    document.getElementById("options").style.display = "flex";
+
+    document.querySelector(".question").style.display = "block";
+
+    document.querySelector(".subtitle").style.display = "block";
+
+    document.querySelector("h1").style.display = "block";
+}
+
+
+function startGame() {
+
+    document.getElementById("options").style.display = "none";
+
+    document.querySelector(".question").style.display = "none";
+
+    document.querySelector(".subtitle").style.display = "none";
+
+    document.querySelector("h1").style.display = "none";
+
+    document.getElementById("game").style.display = "block";
+
+    createHearts();
+}
+
+
+function createHearts() {
+
+    const area = document.getElementById("heartArea");
+
+    area.innerHTML = "";
+
+    document.getElementById("complete").style.display = "none";
+
+    document.getElementById("count").style.display = "block";
+
+    for (let i = 0; i < 12; i++) {
+
+        const heart = document.createElement("div");
+
+        heart.className = "game-heart";
+
+        heart.innerHTML = "♥";
+
+        heart.style.left = Math.random() * 85 + "%";
+
+        heart.style.top = Math.random() * 85 + "%";
+
+        heart.onclick = function() {
+
+            heart.classList.add("pop");
+
+            setTimeout(function() {
+
+                heart.remove();
+
+                let remaining =
+                    document.querySelectorAll(".game-heart").length;
+
+                document.getElementById("count").innerText =
+                    "Hearts left: " + remaining;
+
+                if (remaining === 0) {
+
+                    document.getElementById("count").style.display =
+                        "none";
+
+                    document.getElementById("complete").style.display =
+                        "block";
+                }
+
+            }, 350);
+        };
+
+        area.appendChild(heart);
+    }
+}
+
+</script>
+
+</body>
+</html>
