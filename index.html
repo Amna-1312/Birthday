@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>For My Love ♡</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100%;
+            background: #000;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .page {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            min-height: 100vh;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            overflow: hidden;
+
+            animation: pageFade 1.8s ease-in-out;
+        }
+
+        .page img {
+            width: 100%;
+            height: auto;
+            display: block;
+
+            animation: imageGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes pageFade {
+            from {
+                opacity: 0;
+                transform: scale(0.97);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes imageGlow {
+            from {
+                filter: brightness(0.95);
+            }
+
+            to {
+                filter: brightness(1.08);
+            }
+        }
+
+        .next-button {
+            position: absolute;
+            left: 10%;
+            right: 10%;
+            bottom: 8%;
+            height: 12%;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            background: transparent;
+        }
+
+        /* Hidden music */
+        #ourSong {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page">
+
+        <img src="1(1).png" alt="For My Love">
+
+        <audio id="ourSong" loop>
+            <source src="music/perfect.mp3" type="audio/mpeg">
+        </audio>
+
+        <!-- Same invisible button/area -->
+        <a href="puzzle.html" class="next-button" onclick="startMusic()"></a>
+
+    </div>
+
+    <script>
+        function startMusic() {
+            const music = document.getElementById("ourSong");
+
+            music.play().then(() => {
+                sessionStorage.setItem("musicStarted", "true");
+            }).catch(() => {
+                console.log("Music could not start automatically.");
+            });
+        }
+    </script>
+
+</body>
+</html>

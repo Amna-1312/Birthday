@@ -1,0 +1,339 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Just You ♡</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #000;
+    color: white;
+    font-family: Georgia, serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+
+/* Main gallery */
+
+.gallery {
+    width: 100%;
+    max-width: 500px;
+    height: 100vh;
+    position: relative;
+    background: #000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Small floating hearts */
+
+.heart {
+    position: fixed;
+    color: #7d1820;
+    font-size: 18px;
+    opacity: 0.25;
+    pointer-events: none;
+
+    animation: floatHeart 6s ease-in-out infinite;
+}
+
+.heart1 {
+    top: 18%;
+    left: 10%;
+}
+
+.heart2 {
+    top: 35%;
+    right: 9%;
+    animation-delay: 2s;
+}
+
+.heart3 {
+    bottom: 28%;
+    left: 15%;
+    animation-delay: 1s;
+}
+
+.heart4 {
+    bottom: 18%;
+    right: 14%;
+    animation-delay: 3s;
+}
+
+
+@keyframes floatHeart {
+
+    0%, 100% {
+        transform: translateY(0);
+        opacity: 0.2;
+    }
+
+    50% {
+        transform: translateY(-15px);
+        opacity: 0.45;
+    }
+}
+
+
+/* Photos */
+
+.photo {
+
+    display: none;
+
+    width: 88%;
+    max-height: 78vh;
+
+    object-fit: contain;
+
+    border-radius: 18px;
+
+    border: 1px solid #6d2025;
+
+    box-shadow:
+        0 0 0 6px rgba(80,20,25,0.12),
+        0 10px 35px rgba(90,0,10,0.35);
+
+    animation: photoIn 0.9s ease;
+}
+
+
+/* Photo transition */
+
+@keyframes photoIn {
+
+    from {
+        opacity: 0;
+        transform: scale(0.94) translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+
+/* Top title */
+
+.title {
+
+    position: fixed;
+
+    top: 25px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    color: #b9a69d;
+
+    font-size: 12px;
+
+    letter-spacing: 4px;
+
+    opacity: 0;
+
+    animation: titleIn 1s ease forwards;
+
+    z-index: 5;
+}
+
+
+@keyframes titleIn {
+
+    from {
+        opacity: 0;
+        transform: translate(-50%, -10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+
+/* Button */
+
+button {
+
+    position: fixed;
+
+    bottom: 28px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    padding: 13px 32px;
+
+    background: #090909;
+
+    color: #fff;
+
+    border: 1px solid #7d1820;
+
+    border-radius: 30px;
+
+    font-family: Georgia, serif;
+
+    font-size: 15px;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+
+    z-index: 10;
+}
+
+
+button:hover {
+
+    background: #7d1820;
+
+    box-shadow: 0 0 18px rgba(125,24,32,0.5);
+
+    transform: translateX(-50%) translateY(-2px);
+}
+
+
+button:active {
+
+    transform: translateX(-50%) scale(0.94);
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- Background Music -->
+
+<audio id="bgMusic" autoplay loop>
+    <source src="perfecvt.mp3" type="audio/mpeg">
+</audio>
+
+
+<!-- Floating hearts -->
+
+<div class="heart heart1">♡</div>
+
+<div class="heart heart2">♥</div>
+
+<div class="heart heart3">♡</div>
+
+<div class="heart heart4">♥</div>
+
+
+<!-- Gallery -->
+
+<div class="gallery">
+
+
+    <div class="title">
+        JUST YOU ♡
+    </div>
+
+
+    <img
+        class="photo"
+        src="photos/photo1.jpeg"
+        alt="Moiz"
+    >
+
+
+    <img
+        class="photo"
+        src="photos/photo2.jpeg"
+        alt="Moiz"
+    >
+
+
+    <img
+        class="photo"
+        src="photos/photo3.JPG"
+        alt="Moiz"
+    >
+
+</div>
+
+
+<!-- Next button -->
+
+<button onclick="nextPhoto()">
+    JUST YOU ♡
+</button>
+
+
+<script>
+
+let current = 0;
+
+const photos = document.querySelectorAll(".photo");
+
+
+/* Show first photo */
+
+photos[current].style.display = "block";
+
+
+function nextPhoto() {
+
+    /* Hide current photo */
+
+    photos[current].style.display = "none";
+
+
+    current++;
+
+
+    /* Show next photo */
+
+    if (current < photos.length) {
+
+        photos[current].style.display = "block";
+
+    }
+
+    else {
+
+        /* Go to final celebration */
+
+        window.location.href = "final.html";
+
+    }
+
+}
+
+</script>
+
+
+</body>
+
+</html>
+```
